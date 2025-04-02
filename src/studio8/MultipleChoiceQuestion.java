@@ -3,6 +3,7 @@ package studio8;
 import support.cse131.NotYetImplementedException;
 
 public class MultipleChoiceQuestion extends Question {
+	private String choices[];
 
 	/**
 	 * Constructor
@@ -15,15 +16,27 @@ public class MultipleChoiceQuestion extends Question {
 		// Call the super class constructor, then create and set
 		// instance variables for any values that aren't handled
 		// by the base class
-		throw new NotYetImplementedException();
+		super(prompt,answer,points);
+		this.choices=choices;
+	
+		
+		
+		
 	}
 	
 	/**
 	 * Display the prompt for the question in addition to 
 	 * the choices present for the question.
 	 */
+	
+	//@overwrite
+	
 	public void displayPrompt() {
-		throw new NotYetImplementedException();
+		System.out.println(this.getPrompt() + "(" + this.getPoints() + " points)");
+		for (int i=0; i<choices.length; i++) {
+			System.out.println(i+1 + choices[i]);
+		}
+
 	}
 	
 	/**
@@ -31,11 +44,14 @@ public class MultipleChoiceQuestion extends Question {
 	 * @return String[] of choices
 	 */
 	public String[] getChoices() {
-		throw new NotYetImplementedException();
+		return choices;
 	}
 	
 	public static void main(String[] args) {
-		// TODO: create your own MultipleChoiceQuestion
+		String[] choices= new String[2];
+		choices[0]="Doctor Who";
+		choices[1]="Batman";
+		MultipleChoiceQuestion q1= new MultipleChoiceQuestion("What is David Tennant famous for?","Doctor Who",10, choices);
 	}
 
 }
